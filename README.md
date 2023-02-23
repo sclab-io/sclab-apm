@@ -1,12 +1,30 @@
 # sclab-apm
 Simple APM Agent using MQTT
 
-# create .env
+# Installation
+## 1. install git
 ~~~bash
-$ vi .env
+# centos
+yum install git
 ~~~
 
-# setup .env
+## 2. install nodejs
+~~~bash
+curl -sL https://rpm.nodesource.com/setup_16.x | sudo bash -
+sudo yum install nodejs
+~~~
+
+## 3. clone source
+~~~bash
+git clone https://github.com/sclab-io/sclab-apm.git
+~~~
+
+## 4. create .env
+~~~bash
+vi .env
+~~~
+
+## 5. setup .env
 ~~~bash
 INTERVAL_MS=1000
 APM_MQTT_TOPIC=topic
@@ -16,17 +34,28 @@ APM_MQTT_ID=id
 APM_MQTT_PASSWORD=password
 ~~~
 
-# start
+## 6. build
 ~~~bash
-$ ./run.sh
+./build.sh
 ~~~
 
-# stop
+## 7. [ start|stop|logs ].sh Scripts
+### start
 ~~~bash
-$ ./stop.sh
+./run.sh
 ~~~
 
-# logs
+### stop
 ~~~bash
-$ ./logs.sh
+./stop.sh
+~~~
+
+### logs
+~~~bash
+./logs.sh
+~~~
+
+### more commands
+~~~bash
+npx pm2 -h
 ~~~
