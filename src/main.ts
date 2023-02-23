@@ -126,7 +126,7 @@ class APMService {
     microstats.on('disk', (disk) => {
       this.disk = disk;
     });
-    let options = {};
+    let options = { frequency: '1s' };
     microstats.start(options, function (err) {
       if (err) console.log(err);
     });
