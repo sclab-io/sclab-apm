@@ -32,6 +32,7 @@ APM_MQTT_HOST=host
 APM_MQTT_CLIENT_ID=clientid
 APM_MQTT_ID=id
 APM_MQTT_PASSWORD=password
+# FILE_SYSTEM=/dev/disk2s2,/dev/disk1s3
 ~~~
 
 ## 6. build
@@ -72,7 +73,7 @@ df
 
 vi .env
 
-# add FILE_SYSTEM
+# uncomment FILE_SYSTEM
 FILE_SYSTEM=/dev/disk2s2,/dev/disk1s3
 ~~~
 
