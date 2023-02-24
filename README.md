@@ -77,11 +77,6 @@ vi .env
 FILE_SYSTEM=/dev/disk2s2,/dev/disk1s3
 ~~~
 
-build again
-~~~bash
-./build.sh
-~~~
-
 start
 ~~~bash
 ./run.sh
