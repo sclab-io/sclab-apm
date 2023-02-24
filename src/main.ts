@@ -126,7 +126,15 @@ class APMService {
     microstats.on('disk', (disk) => {
       this.disk = disk;
     });
-    let options = { frequency: '1s' };
+    let options: any = { frequency: '1s' };
+
+    if (process.env.FILE_SYSTEM) {
+      const fsArr: Array<string> = process.env.FILE_SYSTEM.split(',');
+      options.diskalert = {
+        filesystems: fsArr,
+      };
+    }
+
     microstats.start(options, function (err) {
       if (err) console.log(err);
     });

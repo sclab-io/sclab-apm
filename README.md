@@ -61,14 +61,27 @@ npx pm2 -h
 ~~~
 
 # File System Change
-modify main.ts options 129
-~~~typescript
-let options = {
-    frequency: '1s',
-    diskalert: {
-        filesystems: ['/dev/disk1s3'],
-    },
-};
+~~~bash
+./stop.sh
 ~~~
-build again
 
+modify .env
+~~~bash
+# display file system list
+df
+
+vi .env
+
+# add FILE_SYSTEM
+FILE_SYSTEM=/dev/disk2s2,/dev/disk1s3
+~~~
+
+build again
+~~~bash
+./build.sh
+~~~
+
+start
+~~~bash
+./run.sh
+~~~
