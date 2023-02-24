@@ -59,3 +59,16 @@ APM_MQTT_PASSWORD=password
 ~~~bash
 npx pm2 -h
 ~~~
+
+# File System Change
+modify main.ts options 129
+~~~typescript
+let options = {
+    frequency: '1s',
+    diskalert: {
+        filesystems: ['/dev/disk1s3'],
+    },
+};
+~~~
+build again
+
