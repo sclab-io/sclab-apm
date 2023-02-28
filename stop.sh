@@ -1,2 +1,2 @@
 #!/bin/bash
-npx pm2 stop 0
+./node_modules/.bin/pm2 stop 0

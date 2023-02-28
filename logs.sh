@@ -1,2 +1,2 @@
 #!/bin/bash
-npx pm2 logs
+./node_modules/.bin/pm2 logs
