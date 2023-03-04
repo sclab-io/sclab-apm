@@ -175,6 +175,10 @@ class APMService {
   }
 }
 
+process.on('uncaughtException', function (err) {
+  console.error(err);
+});
+
 process.on('SIGINT', () => {
   process.exit();
 });
