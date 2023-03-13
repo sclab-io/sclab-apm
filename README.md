@@ -58,7 +58,7 @@ APM_MQTT_PASSWORD=password
 
 ### more commands
 ~~~bash
-npx pm2 -h
+./node_modules/.bin/pm2 -h
 ~~~
 
 # File System Change
