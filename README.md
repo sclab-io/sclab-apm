@@ -29,6 +29,8 @@ vi .env
 INTERVAL_MS=1000
 TIMEZONE=Asia/Seoul
 DATE_FORMAT=yyyy-MM-dd HH:mm:ss
+LOG_DIR=../../logs
+LOG_FORMAT=dev
 APM_MQTT_TOPIC=topic
 APM_MQTT_HOST=host
 APM_MQTT_CLIENT_ID=clientid
