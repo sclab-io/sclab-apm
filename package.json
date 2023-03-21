@@ -34,6 +34,8 @@
   "dependencies": {
     "dotenv": "^16.0.3",
     "microstats": "^0.1.2",
+    "moment": "^2.29.4",
+    "moment-timezone": "^0.5.41",
     "mqtt": "^4.3.7",
     "tslib": "~2.4"
   },

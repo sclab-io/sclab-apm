@@ -27,6 +27,8 @@ vi .env
 ## 5. setup .env
 ~~~bash
 INTERVAL_MS=1000
+TIMEZONE=Asia/Seoul
+DATE_FORMAT=yyyy-MM-dd HH:mm:ss
 APM_MQTT_TOPIC=topic
 APM_MQTT_HOST=host
 APM_MQTT_CLIENT_ID=clientid

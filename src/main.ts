@@ -2,6 +2,8 @@ import mqtt from 'mqtt';
 import process from 'process';
 import microstats from 'microstats';
 import dotenv from 'dotenv';
+import moment from 'moment';
+import 'moment-timezone';
 
 dotenv.config();
 
@@ -73,6 +75,8 @@ class APMService {
       'APM service start.\n',
       '=====================================================\n',
       'INTERVAL_MS (default: 1000) : ' + this.intervalMS + '\n',
+      'TIMEZONE : ' + process.env.TIMEZONE + '\n',
+      'DATE_FORMAT : ' + process.env.DATE_FORMAT + '\n',
       'APM_MQTT_HOST : ' + process.env.APM_MQTT_HOST + '\n',
       'APM_MQTT_ID : ' + process.env.APM_MQTT_ID + '\n',
       'APM_MQTT_PASSWORD : ' + process.env.APM_MQTT_PASSWORD + '\n',
@@ -148,11 +152,15 @@ class APMService {
 
   collectMetric(): MetricData {
     const now: Date = new Date();
+    let nowDate = now.toISOString();
+    if (process.env.TIMEZONE && process.env.DATE_FORMAT) {
+      nowDate = moment.tz(process.env.TIMEZONE).format(process.env.DATE_FORMAT);
+    }
     const metric: MetricData = {
       cpu: this.cpu,
       mem: this.memory,
       disk: this.disk,
-      date: now.toISOString(),
+      date: nowDate,
       time: now.getTime(),
     };
 
