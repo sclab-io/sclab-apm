@@ -5,7 +5,6 @@ import dotenv from 'dotenv';
 import moment from 'moment';
 import 'moment-timezone';
 import { logger } from '@/logger';
-import { LOG_DIR } from '@config';
 
 dotenv.config();
 
