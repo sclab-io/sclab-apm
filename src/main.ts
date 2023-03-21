@@ -92,6 +92,12 @@ class APMService {
         'DATE_FORMAT : ' +
         process.env.DATE_FORMAT +
         '\n' +
+        'LOG_DIR : ' +
+        process.env.LOG_DIR +
+        '\n' +
+        'LOG_FORMAT : ' +
+        process.env.LOG_FORMAT +
+        '\n' +
         'APM_MQTT_HOST : ' +
         process.env.APM_MQTT_HOST +
         '\n' +
@@ -107,8 +113,6 @@ class APMService {
         'APM_MQTT_CLIENT_ID : ' +
         process.env.APM_MQTT_CLIENT_ID,
     );
-    logger.info('LOG_DIR', process.env.LOG_DIR);
-    logger.info('LOG_FORMAT', process.env.LOG_FORMAT);
     const options: any = {
       clientId: process.env.APM_MQTT_CLIENT_ID,
       rejectUnauthorized: false,
