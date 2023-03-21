@@ -5,6 +5,7 @@ import dotenv from 'dotenv';
 import moment from 'moment';
 import 'moment-timezone';
 import { logger } from '@/logger';
+import { LOG_DIR } from '@config';
 
 dotenv.config();
 
@@ -106,6 +107,8 @@ class APMService {
         'APM_MQTT_CLIENT_ID : ' +
         process.env.APM_MQTT_CLIENT_ID,
     );
+    logger.info('LOG_DIR', process.env.LOG_DIR);
+    logger.info('LOG_FORMAT', process.env.LOG_FORMAT);
     const options: any = {
       clientId: process.env.APM_MQTT_CLIENT_ID,
       rejectUnauthorized: false,
