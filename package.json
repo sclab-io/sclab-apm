@@ -1,6 +1,6 @@
 {
   "name": "sclab-apm",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "SCLAB APM",
   "type": "module",
   "engines": {
