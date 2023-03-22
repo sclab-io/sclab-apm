@@ -1,6 +1,6 @@
 {
   "name": "sclab-apm",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "SCLAB APM",
   "devDependencies": {
     "@swc/cli": "^0.1.57",
