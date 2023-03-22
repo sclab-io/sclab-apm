@@ -46,7 +46,7 @@
   "license": "MIT",
   "dependencies": {
     "dotenv": "^16.0.3",
-    "microstats": "^0.1.2",
+    "microstats": "file:./npm/microstats",
     "moment": "^2.29.4",
     "moment-timezone": "^0.5.41",
     "mqtt": "^4.3.7",
