@@ -45,23 +45,20 @@ switch(process.env.platform) {
                 if(err) return;
 
                 let segments = output.split('\n');
-                for(let i=3; i<segments.length; ++i) {
-                    let segment = segments[i].split(/\s+/)
+                // get indexes from header
+                let sizeIndex = segments[1].indexOf("Size");
+                let freeIndex = segments[1].indexOf("FreeSpace");
 
-                    if (segment.length < 3) {
-                        continue;
-                    }
+                for(let i=3; i < segments.length; ++i) {
+                    let filesystem = segments[i].substring(0, 2);
+                    if(options.diskfilesystems && options.diskfilesystems.indexOf(filesystem) < 0) continue;
 
-                    let free = segment[4];
-                    if(!free) return;
-
+                    let total = segments[i].substring(sizeIndex, freeIndex);
+                    let free = segments[i].substring(freeIndex);
+                    total = parseInt(total, 10);
                     free = parseInt(free);
-                    let filesystem = segment[0];
-                    if(options.diskfilesystems && options.diskfilesystems.indexOf(filesystem) < 0) return;
 
-                    let total = parseInt(segment[4]);
                     let usedpct = Number(parseFloat((total - free) / total * 100).toFixed(2));
-
                     if(!options.threshold || options.threshold === 0 || usedpct > options.threshold) {
                         statEmitter.emit('disk', { filesystem: filesystem, usedpct: usedpct, total: total, free: free });
                     }
