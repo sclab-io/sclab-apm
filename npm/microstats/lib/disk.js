@@ -17,13 +17,13 @@ switch(process.env.platform) {
                     if(options.diskfilesystems && options.diskfilesystems.indexOf(filesystem) < 0) return;
                        
                     if(isNaN(drivedetails[1])) {
-                        total = parseInt(drivedetails[2]); 
-                        free = parseInt(drivedetails[4]);
+                        total = parseInt(drivedetails[2], 10); 
+                        free = parseInt(drivedetails[4], 10);
                         mount = drivedetails[6];
                     }
                     else {
-                        total = parseInt(drivedetails[1]);
-                        free = parseInt(drivedetails[3]);
+                        total = parseInt(drivedetails[1], 10);
+                        free = parseInt(drivedetails[3], 10);
                         mount = drivedetails[5];
                     }
                     if(options.mounts && options.mounts.indexOf(mount) < 0) return;
@@ -40,6 +40,8 @@ switch(process.env.platform) {
         
         case 'win': 
         module.exports = function(statEmitter, options) {
+            // MB command
+            //let powershell = 'powershell Get-CimInstance -ClassName Win32_LogicalDisk | Format-Table DeviceId, MediaType, @{n="Size";e={[math]::Round($_.Size/1MB,2)}},@{n="FreeSpace";e={[math]::Round($_.FreeSpace/1MB,2)}}';
             let powershell = 'powershell Get-CimInstance -ClassName Win32_LogicalDisk';
             exec(powershell, function(err, output, code) {
                 if(err) return;
@@ -56,7 +58,7 @@ switch(process.env.platform) {
                     let total = segments[i].substring(sizeIndex, freeIndex);
                     let free = segments[i].substring(freeIndex);
                     total = parseInt(total, 10);
-                    free = parseInt(free);
+                    free = parseInt(free, 10);
 
                     let usedpct = Number(parseFloat((total - free) / total * 100).toFixed(2));
                     if(!options.threshold || options.threshold === 0 || usedpct > options.threshold) {
