@@ -2,6 +2,8 @@ import { existsSync, mkdirSync } from 'fs';
 import { join } from 'path';
 import winston from 'winston';
 import winstonDaily from 'winston-daily-rotate-file';
+import dotenv from 'dotenv';
+dotenv.config();
 
 // logs dir
 const logDir: string = join(__dirname, process.env.LOG_DIR || '../../logs');

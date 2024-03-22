@@ -43,7 +43,6 @@ class APMService {
   disk: DISKUsage;
 
   init() {
-    logger.info('!!!');
     // INTERVAL_MS
     if (process.env.INTERVAL_MS) {
       this.intervalMS = parseInt(process.env.INTERVAL_MS, 10);
