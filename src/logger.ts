@@ -57,11 +57,13 @@ const logger = winston.createLogger({
   transports,
 });
 
-logger.add(
-  new winston.transports.Console({
-    format: winston.format.combine(winston.format.splat(), winston.format.colorize()),
-  }),
-);
+if (logLevel !== 'no') {
+  logger.add(
+    new winston.transports.Console({
+      format: winston.format.combine(winston.format.splat(), winston.format.colorize()),
+    }),
+  );
+}
 
 const stream = {
   write: (message: string) => {
