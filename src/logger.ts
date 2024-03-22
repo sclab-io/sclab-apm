@@ -11,9 +11,7 @@ if (!existsSync(logDir)) {
 }
 
 // Define log format
-const logFormat = winston.format.printf(
-  ({ timestamp, level, message }) => `${timestamp} ${level}: ${message}`,
-);
+const logFormat = winston.format.printf(({ timestamp, level, message }) => `${timestamp} ${level}: ${message}`);
 
 /*
  * Log Level
@@ -29,7 +27,7 @@ const logger = winston.createLogger({
   transports: [
     // debug log setting
     new winstonDaily({
-      level: 'debug',
+      level: process.env.LOG_FORMAT || 'debug',
       datePattern: 'YYYY-MM-DD',
       dirname: logDir + '/debug', // log file /logs/debug/*.log in save
       filename: `%DATE%.log`,
@@ -53,10 +51,7 @@ const logger = winston.createLogger({
 
 logger.add(
   new winston.transports.Console({
-    format: winston.format.combine(
-      winston.format.splat(),
-      winston.format.colorize(),
-    ),
+    format: winston.format.combine(winston.format.splat(), winston.format.colorize()),
   }),
 );
 
