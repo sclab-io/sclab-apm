@@ -30,6 +30,8 @@ INTERVAL_MS=1000
 TIMEZONE=Asia/Seoul
 DATE_FORMAT=yyyy-MM-dd HH:mm:ss
 LOG_DIR=../../logs
+# hide log 
+# LOG_FORMAT=no
 LOG_FORMAT=dev
 APM_MQTT_TOPIC=topic
 APM_MQTT_HOST=host
